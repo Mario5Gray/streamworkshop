@@ -1,0 +1,10 @@
+# Class exercises - configuration for single class
+---
+classes:
+  - exercises:
+      - file: "../streamworkshop-strigo/domain.md"
+        title: "Welcome to Spring!"
+      - file: "../streamworkshop-strigo/function.md"
+        title: "Spring Cloud is Spring in the Cloud!"
+      - file: "../streamworkshop-strigo/deploy.md"
+        title: "Spring Cloud Dataflow is what is says it is."
