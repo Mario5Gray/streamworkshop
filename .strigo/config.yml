@@ -5,6 +5,6 @@ classes:
       - file: "../streamworkshop-strigo/domain.md"
         title: "Welcome to Spring!"
       - file: "../streamworkshop-strigo/function.md"
-        title: "Spring Cloud is Spring in the Cloud!"
+        title: "Spring Cloud is Spring, at home in the Cloud!"
       - file: "../streamworkshop-strigo/deploy.md"
-        title: "Spring Cloud Dataflow is what is says it is."
+        title: "Spring Cloud Dataflow is what it says it is."

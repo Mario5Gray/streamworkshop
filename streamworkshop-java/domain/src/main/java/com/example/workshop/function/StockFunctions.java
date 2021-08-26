@@ -23,7 +23,7 @@ public class StockFunctions {
     }
 
     @Bean
-    public Function<Mono<String>, Flux<StockTick>> ticks() {
+    public Function<Mono<String>, Flux<StockTick>> stockTicks() {
         return stringMono -> stringMono.flatMapMany(tickService::subscribeToSymbolTicks);
     }
 }
