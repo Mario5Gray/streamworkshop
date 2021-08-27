@@ -1,7 +1,8 @@
 package com.example.workshop.domain;
 
-import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.util.Assert;
 
 
@@ -24,8 +25,9 @@ public class Stock {
 
     void init(Long id, String symbol, double price, double last, double high, double low) {
         Assert.state(id != null, () -> "the id should not be null");
+        Assert.state(symbol !=null && symbol.length()==4, () -> "Symbol must be 4 alphanumeric characters.");
         Assert.state(((high > low && low < high) || high==low), () -> "High cannot be lower than low.");
-        Assert.state(high == low || (high > low && low < last && high > last),
+        Assert.state((high==0.0) == (0.0==low) || (high > low && low < last && high > last),
                 () -> "last is not in bounds of low and high");
         this.id = id;
         this.symbol = symbol;

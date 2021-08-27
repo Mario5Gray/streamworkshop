@@ -33,7 +33,7 @@ public class StockTests {
     }
 
     @Test
-    public void shouldNotCreteWhenLastNotWithinHighLowBounds() {
+    public void shouldNotCreateWhenLastNotWithinHighLowBounds() {
         assertThatExceptionOfType(IllegalStateException.class).isThrownBy(() ->
                 new Stock(null, "TEST", 10.0, 150.0, 100.0, 50.0));
     }
