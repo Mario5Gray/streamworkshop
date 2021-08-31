@@ -21,20 +21,8 @@ public class StockTests {
     }
 
     @Test
-    public void shouldNotCreate() {
-        assertThatExceptionOfType(IllegalStateException.class).isThrownBy(() ->
-                new Stock("TEST", 10.0, 10.0, 10.0, 10.0));
-    }
-
-    @Test
     public void shouldNotCreteWhenLowMoreThanHigh() {
         assertThatExceptionOfType(IllegalStateException.class).isThrownBy(() ->
                 new Stock("TEST", 10.0, 10.0, 10.0, 15.0));
-    }
-
-    @Test
-    public void shouldNotCreateWhenLastNotWithinHighLowBounds() {
-        assertThatExceptionOfType(IllegalStateException.class).isThrownBy(() ->
-                new Stock("TEST", 10.0, 150.0, 100.0, 50.0));
     }
 }
