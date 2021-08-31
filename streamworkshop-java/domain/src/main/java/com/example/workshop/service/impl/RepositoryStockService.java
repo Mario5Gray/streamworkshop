@@ -4,7 +4,6 @@ import com.example.workshop.domain.Stock;
 import com.example.workshop.repository.StockRepository;
 import com.example.workshop.service.StockService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.r2dbc.repository.config.EnableR2dbcRepositories;
 import reactor.core.publisher.Mono;
 
 @RequiredArgsConstructor

@@ -5,15 +5,9 @@ import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.util.Assert;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Table;
-
 
 @Setter
 @Getter
-@Entity
-@Table(name = "stock")
 public class Stock {
     @Id
     String symbol;
