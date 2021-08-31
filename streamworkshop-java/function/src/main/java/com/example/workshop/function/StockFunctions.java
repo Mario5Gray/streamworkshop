@@ -13,13 +13,22 @@ import java.util.function.Function;
 
 @RequiredArgsConstructor
 public class StockFunctions {
-    private final StockService quoteService;
+    private final StockService stockService;
     private final StockTickService tickService;
+
+    @Bean
+    public Function<Flux<TradeRequest>, Flux<StockTick>> trade() {
+        return trades -> trades.flatMap(s ->
+                stockService
+                        .tradeStock(s.getSymbol(), s.getPrice())
+                        .map(f -> new StockTick(s.getSymbol(), s.getPrice()))
+        );
+    }
 
     @Bean
     public Function<Mono<String>, Mono<Stock>> snapshot() {
         return stringMono -> stringMono
-                .flatMap(quoteService::getQuote);
+                .flatMap(stockService::getQuote);
     }
 
     @Bean

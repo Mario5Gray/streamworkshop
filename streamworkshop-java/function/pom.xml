@@ -17,12 +17,12 @@
 		<dependency>
 			<groupId>com.example</groupId>
 			<artifactId>streamworkshop-domain</artifactId>
+			<version>0.0.1</version>
 		</dependency>
 		<dependency>
-			<groupId>com.example</groupId>
-			<artifactId>streamworkshop-domain</artifactId>
-			<version>0.0.1</version>
-			<scope>compile</scope>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
 		</dependency>
 	</dependencies>
 
