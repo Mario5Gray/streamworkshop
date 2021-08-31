@@ -1,4 +1,4 @@
-package com.example.test.domain;
+package com.example.workshop.test.domain;
 
 import com.example.workshop.domain.Stock;
 import org.assertj.core.api.Assertions;
@@ -12,10 +12,10 @@ public class StockTests {
     @Test
     public void shouldStockCreate() {
         assertThatNoException().isThrownBy(() ->
-                new Stock(1L, "TEST", 10.0));
+                new Stock("TEST", 10.0));
 
         Assertions
-                .assertThat(new Stock(1L, "TEST", 10.00))
+                .assertThat(new Stock("TEST", 10.00))
                 .isNotNull()
                 .hasNoNullFieldsOrProperties();
     }
@@ -23,18 +23,18 @@ public class StockTests {
     @Test
     public void shouldNotCreate() {
         assertThatExceptionOfType(IllegalStateException.class).isThrownBy(() ->
-                new Stock(null, "TEST", 10.0, 10.0, 10.0, 10.0));
+                new Stock("TEST", 10.0, 10.0, 10.0, 10.0));
     }
 
     @Test
     public void shouldNotCreteWhenLowMoreThanHigh() {
         assertThatExceptionOfType(IllegalStateException.class).isThrownBy(() ->
-                new Stock(null, "TEST", 10.0, 10.0, 10.0, 15.0));
+                new Stock("TEST", 10.0, 10.0, 10.0, 15.0));
     }
 
     @Test
     public void shouldNotCreateWhenLastNotWithinHighLowBounds() {
         assertThatExceptionOfType(IllegalStateException.class).isThrownBy(() ->
-                new Stock(null, "TEST", 10.0, 150.0, 100.0, 50.0));
+                new Stock("TEST", 10.0, 150.0, 100.0, 50.0));
     }
 }

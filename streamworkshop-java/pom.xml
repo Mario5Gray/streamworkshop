@@ -21,7 +21,7 @@
         <java.version>11</java.version>
         <spring-boot.version>2.3.0.RELEASE</spring-boot.version>
         <spring-cloud.version>Hoxton.SR12</spring-cloud.version>
-        <io-reactor.version>3.3.0.RELEASE</io-reactor.version>
+        <io-reactor.version>3.4.8</io-reactor.version>
     </properties>
 
     <modules>

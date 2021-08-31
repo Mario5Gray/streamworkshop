@@ -5,6 +5,8 @@ import com.example.workshop.domain.StockTick;
 import com.example.workshop.domain.User;
 import reactor.core.publisher.Mono;
 
-public interface StockQuoteService {
+public interface StockService {
     Mono<Stock> getQuote(String symbol);
+    Mono<Void> tradeStock(String symbol, double price);
 }
+

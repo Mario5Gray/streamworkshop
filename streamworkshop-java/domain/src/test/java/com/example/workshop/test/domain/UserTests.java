@@ -1,4 +1,4 @@
-package com.example.test.domain;
+package com.example.workshop.test.domain;
 
 import com.example.workshop.domain.StockTick;
 import com.example.workshop.domain.User;
