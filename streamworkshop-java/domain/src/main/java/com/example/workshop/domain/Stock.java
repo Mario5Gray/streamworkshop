@@ -12,28 +12,26 @@ public class Stock {
     @Id
     String symbol;
     double price;
-    double lastClose;
-    double high52Week;
-    double low52Week;
+    double high;
+    double low;
 
-    public Stock() {}
+    public Stock() {
+    }
 
     public Stock(String s, double p) {
-        init(s, p, 0.0, p, p);
+        init(s, p, p, p);
     }
 
-    public  Stock(String symbol, double price, double last, double high, double low) {
-        init(symbol, price, last, high, low);
+    public Stock(String symbol, double price, double high, double low) {
+        init(symbol, price, high, low);
     }
 
-    void init(String symbol, double price, double last, double high, double low) {
-        //Assert.state(id != null, () -> "the id should not be null");
-        Assert.state(symbol !=null && symbol.length()==4, () -> "Symbol must be 4 alphanumeric characters.");
-        Assert.state(((high > low && low < high) || high==low), () -> "High cannot be lower than low.");
+    void init(String symbol, double price, double high, double low) {
+        Assert.state(symbol != null && symbol.length() == 4, () -> "Symbol must be 4 alphanumeric characters.");
+        Assert.state(((high > low && low < high) || high == low), () -> "hi/lo value mismatch.");
         this.symbol = symbol;
         this.price = price;
-        this.lastClose = last;
-        this.high52Week = high;
-        this.low52Week = low;
+        this.high = high;
+        this.low = low;
     }
 }

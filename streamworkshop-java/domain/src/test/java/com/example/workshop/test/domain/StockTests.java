@@ -23,6 +23,6 @@ public class StockTests {
     @Test
     public void shouldNotCreteWhenLowMoreThanHigh() {
         assertThatExceptionOfType(IllegalStateException.class).isThrownBy(() ->
-                new Stock("TEST", 10.0, 10.0, 10.0, 15.0));
+                new Stock("TEST",  10.0, 10.0, 15.0));
     }
 }

@@ -1,7 +1,6 @@
 package com.example.workshop.test;
 
 import com.example.workshop.domain.Stock;
-import com.example.workshop.domain.TradeRequest;
 import com.example.workshop.repository.StockRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Tag;
@@ -25,13 +24,13 @@ import java.util.HashMap;
 @Testcontainers
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE,
         properties = {
-                "--spring.cloud.function.definition=trade",
-                "--spring.cloud.stream.bindings.trade-in-0.destination=trade-req",
-                "--spring.cloud.stream.bindings.trade-out-0.destination=trades"
+                "--spring.cloud.function.definition=snapshot",
+                "--spring.cloud.stream.bindings.snapshot-in-0.destination=snapshot-req",
+                "--spring.cloud.stream.bindings.snapshot-out-0.destination=snapshots"
         }
 )
 @Tag("integration")
-public class StockTradeFunctionTests {
+public class SnapshotFunctionTests {
 
     @Container
     static final MongoDBContainer mongoDBContainer = new MongoDBContainer(DockerImageName.parse("mongo:4.0.10"));
@@ -51,7 +50,7 @@ public class StockTradeFunctionTests {
     CompositeMessageConverter converter;
 
     @Test
-    public void shouldPerformTradeActivity() {
+    public void shouldReceiveSnapshot() {
         StepVerifier
                 .create(repository.save(new Stock("TEST", 42.0)))
                 .assertNext(s -> {
@@ -64,7 +63,7 @@ public class StockTradeFunctionTests {
         var headers = new HashMap<String, Object>();
         headers.put("contentType", "application/json");
         var messageHeaders = new MessageHeaders(headers);
-        inputDestination.send(converter.toMessage(new TradeRequest("TEST", 10.0), messageHeaders));
+        inputDestination.send(converter.toMessage("TEST", messageHeaders));
         var msg = outputDestination.receive(2000);
         Assertions
                 .assertThat(msg)

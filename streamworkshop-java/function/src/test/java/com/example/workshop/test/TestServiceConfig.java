@@ -1,18 +1,19 @@
 package com.example.workshop.test;
 
-import com.example.workshop.repository.StockRepository;
+import com.example.workshop.function.StockFunctions;
 import com.example.workshop.service.impl.RepositoryStockService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.TestConfiguration;
-import org.springframework.context.annotation.Bean;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.stream.binder.test.TestChannelBinderConfiguration;
+import org.springframework.cloud.stream.config.BindingServiceConfiguration;
+import org.springframework.context.annotation.Import;
+import org.springframework.data.mongodb.repository.config.EnableReactiveMongoRepositories;
 
-@TestConfiguration
+@SpringBootApplication
+@EnableReactiveMongoRepositories(basePackages = {"com.example.workshop.repository"})
+@Import({RepositoryStockService.class,
+        StockFunctions.class,
+        TestChannelBinderConfiguration.class,
+        BindingServiceConfiguration.class})
 public class TestServiceConfig {
-    @Autowired
-    StockRepository stockRepository;
 
-    @Bean
-    public RepositoryStockService stockService() {
-        return new RepositoryStockService(stockRepository);
-    }
 }

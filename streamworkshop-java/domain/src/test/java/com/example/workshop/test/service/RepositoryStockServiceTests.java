@@ -16,7 +16,7 @@ import reactor.test.StepVerifier;
 
 @ExtendWith(SpringExtension.class)
 @Import(RepositoryStockService.class)
-public class StockServiceTests {
+public class RepositoryStockServiceTests {
 
     @MockBean
     private StockRepository repo;
