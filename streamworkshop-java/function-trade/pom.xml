@@ -8,10 +8,10 @@
 		<version>0.0.1</version>
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>streamworkshop-function</artifactId>
+	<artifactId>streamworkshop-function-trade</artifactId>
 	<version>0.0.1</version>
-	<name>streamworkshop-functions</name>
-	<description>Function packaging for StreamWorkshop</description>
+	<name>streamworkshop-function-trade</name>
+	<description>Trade Function packaging for StreamWorkshop</description>
 
 	<dependencies>
 <!--		<dependency>-->
