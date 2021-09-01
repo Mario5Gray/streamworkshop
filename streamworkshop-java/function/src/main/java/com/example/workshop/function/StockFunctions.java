@@ -3,7 +3,6 @@ package com.example.workshop.function;
 import com.example.workshop.domain.Stock;
 import com.example.workshop.domain.StockTick;
 import com.example.workshop.service.StockService;
-import com.example.workshop.service.StockTickService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import reactor.core.publisher.Flux;
@@ -14,7 +13,6 @@ import java.util.function.Function;
 @RequiredArgsConstructor
 public class StockFunctions {
     private final StockService stockService;
-    private final StockTickService tickService;
 
     @Bean
     public Function<Flux<TradeRequest>, Flux<StockTick>> trade() {
@@ -31,8 +29,8 @@ public class StockFunctions {
                 .flatMap(stockService::getQuote);
     }
 
-    @Bean
-    public Function<Mono<String>, Flux<StockTick>> stockTicks() {
-        return stringMono -> stringMono.flatMapMany(tickService::subscribeToSymbolTicks);
-    }
+//    @Bean
+//    public Function<Mono<String>, Flux<StockTick>> stockTicks() {
+//        return stringMono -> stringMono.flatMapMany(tickService::subscribeToSymbolTicks);
+//    }
 }
