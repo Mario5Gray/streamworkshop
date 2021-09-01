@@ -8,17 +8,13 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.WebApplicationType;
-import org.springframework.boot.autoconfigure.mongo.embedded.EmbeddedMongoAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
 import org.springframework.cloud.stream.binder.test.InputDestination;
 import org.springframework.cloud.stream.binder.test.OutputDestination;
 import org.springframework.cloud.stream.binder.test.TestChannelBinderConfiguration;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.messaging.MessageHeaders;
 import org.springframework.messaging.converter.CompositeMessageConverter;
-import org.springframework.test.context.DynamicPropertyRegistry;
-import org.springframework.test.context.DynamicPropertySource;
 import org.testcontainers.containers.MongoDBContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
@@ -28,25 +24,17 @@ import reactor.test.StepVerifier;
 import java.util.HashMap;
 
 @Testcontainers
-@DataMongoTest(excludeAutoConfiguration = EmbeddedMongoAutoConfiguration.class)
 @Tag("integration")
-public class StockFunctionTests {
+public class StockQuoteFunctionTests {
 
     @Container
     static final MongoDBContainer mongoDBContainer = new MongoDBContainer(DockerImageName.parse("mongo:4.0.10"));
 
-    @DynamicPropertySource
-    static void setMongoProperties(DynamicPropertyRegistry registry) {
-        registry.add("spring.data.mongodb.uri", mongoDBContainer::getReplicaSetUrl);
-    }
-
     @Test
-    public void shouldReceiveQuote() {
-        System.out.println("QUOTE-REPLICASETURL: " + mongoDBContainer.getReplicaSetUrl());
-
+    public void saveByRepositoryQueryByStream() {
         try (ConfigurableApplicationContext context = new SpringApplicationBuilder(
                 TestChannelBinderConfiguration
-                        .getCompleteConfiguration(App.class, TestServiceConfig.class, StockFunctions.class)
+                        .getCompleteConfiguration(App.class, StockFunctions.class)
         ).web(WebApplicationType.NONE).run(
                 "--spring.data.mongodb.uri=" + mongoDBContainer.getReplicaSetUrl(),
                 "--spring.cloud.function.definition=snapshot",

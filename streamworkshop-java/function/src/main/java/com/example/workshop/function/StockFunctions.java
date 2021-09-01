@@ -28,9 +28,4 @@ public class StockFunctions {
         return stringMono -> stringMono
                 .flatMap(stockService::getQuote);
     }
-
-//    @Bean
-//    public Function<Mono<String>, Flux<StockTick>> stockTicks() {
-//        return stringMono -> stringMono.flatMapMany(tickService::subscribeToSymbolTicks);
-//    }
 }
