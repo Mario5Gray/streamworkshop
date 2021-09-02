@@ -1,9 +1,6 @@
 export scdf_namespace="workshop"
 export scdf_release="lab_scdf"
 
-export prometheus_namespace="prometheus"
-export prometheus_release="lab_prometheus"
-
 helm repo add bitnami https://charts.bitnami.com/bitnami
 helm install -n ${scdf_namespace} ${scdf_release} bitnami/spring-cloud-dataflow
 
