@@ -16,5 +16,5 @@ if ! helm status "${scdf_release}" >/dev/null; then
     --set rabbitmq.enabled=true
 fi
 
-export SERVICEPORT=$(kubectl get --namespace default -o jsonpath="{.spec.ports[0].port}" services ${scdf_release}-spring-cloud-dataflow-server)
+export SERVICEPORT=$(kubectl get --namespace default -o jsonpath="{.spec.ports[0].port}" services labscdf-spring-cloud-dataflow-server)
 kubectl port-forward --namespace default svc/labscdf-spring-cloud-dataflow-server ${SERVICEPORT}:${SERVICEPORT} & echo "http://127.0.0.1:${SERVICEPORT}/dashboard" &
