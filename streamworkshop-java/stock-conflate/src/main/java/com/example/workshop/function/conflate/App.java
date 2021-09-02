@@ -8,11 +8,6 @@ import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class App {
-    @Bean
-    public ConflationService conflationService() {
-        return new MemoryConflationService();
-    }
-
     public static void main(String[] args) {
         SpringApplication.run(App.class, args);
     }

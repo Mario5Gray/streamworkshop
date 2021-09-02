@@ -4,13 +4,13 @@ import com.example.workshop.domain.Stock;
 import com.example.workshop.domain.TradeRequest;
 import com.example.workshop.service.ConflationService;
 import com.example.workshop.service.impl.MemoryConflationService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import reactor.core.publisher.Flux;
 
 import java.util.function.Function;
 
-@RequiredArgsConstructor
+@Configuration
 public class ConflateFunctions {
     private final ConflationService conflationService = new MemoryConflationService();
 

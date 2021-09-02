@@ -13,7 +13,7 @@
     <name>streamworkshop-function-conflate</name>
     <description>Memory Conflation packaging for StreamWorkshop</description>
     <properties>
-        <appImageName>docker.io/library/streamworkshop-conflate:${project.version}</appImageName>
+        <appImageName>docker.io/library/stockstream-conflate:${project.version}</appImageName>
         <appMainClass>com.example.workshop.function.conflate.App</appMainClass>
     </properties>
 
