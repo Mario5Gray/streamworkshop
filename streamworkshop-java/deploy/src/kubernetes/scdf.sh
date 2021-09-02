@@ -1,4 +1,4 @@
-export scdf_namespace="workshop"
+export scdf_namespace="default"
 export scdf_release="labscdf"
 
 helm repo add bitnami https://charts.bitnami.com/bitnami
