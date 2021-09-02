@@ -11,16 +11,8 @@ import reactor.core.publisher.Mono;
 import java.util.function.Function;
 
 @RequiredArgsConstructor
-public class StockFunctions {
+public class SnapshotFunctions {
     private final StockService stockService;
-
-    @Bean
-    public Function<Flux<TradeRequest>, Flux<Stock>> trade() {
-        return trades -> trades.flatMap(s ->
-                stockService
-                        .tradeStock(s.getSymbol(), s.getPrice())
-        );
-    }
 
     @Bean
     public Function<Mono<String>, Mono<Stock>> snapshot() {

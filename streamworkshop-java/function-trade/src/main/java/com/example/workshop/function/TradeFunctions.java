@@ -6,12 +6,11 @@ import com.example.workshop.service.StockService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
 
 import java.util.function.Function;
 
 @RequiredArgsConstructor
-public class StockFunctions {
+public class TradeFunctions {
     private final StockService stockService;
 
     @Bean
@@ -20,11 +19,5 @@ public class StockFunctions {
                 stockService
                         .tradeStock(s.getSymbol(), s.getPrice())
         );
-    }
-
-    @Bean
-    public Function<Mono<String>, Mono<Stock>> snapshot() {
-        return stringMono -> stringMono
-                .flatMap(stockService::getQuote);
     }
 }

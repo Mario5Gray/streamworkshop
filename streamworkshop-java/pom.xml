@@ -28,7 +28,6 @@
         <module>domain</module>
         <module>function-trade</module>
         <module>function-snapshot</module>
-        <module>deploy</module>
     </modules>
 
     <repositories>
@@ -85,4 +84,16 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <profiles>
+        <profile>
+            <id>rabbit</id>
+            <dependencies>
+                <dependency>
+                    <groupId>org.springframework.cloud</groupId>
+                    <artifactId>spring-cloud-stream-binder-rabbit</artifactId>
+                </dependency>
+            </dependencies>
+        </profile>
+    </profiles>
 </project>

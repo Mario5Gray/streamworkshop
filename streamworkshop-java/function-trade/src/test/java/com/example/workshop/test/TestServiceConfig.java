@@ -1,6 +1,6 @@
 package com.example.workshop.test;
 
-import com.example.workshop.function.StockFunctions;
+import com.example.workshop.function.TradeFunctions;
 import com.example.workshop.service.impl.RepositoryStockService;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.stream.binder.test.TestChannelBinderConfiguration;
@@ -11,7 +11,7 @@ import org.springframework.data.mongodb.repository.config.EnableReactiveMongoRep
 @SpringBootApplication
 @EnableReactiveMongoRepositories(basePackages = {"com.example.workshop.repository"})
 @Import({RepositoryStockService.class,
-        StockFunctions.class,
+        TradeFunctions.class,
         TestChannelBinderConfiguration.class,
         BindingServiceConfiguration.class})
 public class TestServiceConfig {

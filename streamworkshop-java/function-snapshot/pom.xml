@@ -12,21 +12,11 @@
 	<version>0.0.1</version>
 	<name>streamworkshop-function-snapshot</name>
 	<description>Snapshot Function packaging for StreamWorkshop</description>
-
+	<properties>
+		<appImageName>docker.io/library/streamworkshop-snapshot:${project.version}</appImageName>
+		<appMainClass>com.example.workshop.function.App</appMainClass>
+	</properties>
 	<dependencies>
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.cloud.fn</groupId>-->
-<!--			<artifactId>http-supplier</artifactId>-->
-<!--			<version>1.0.3</version>-->
-<!--		</dependency>-->
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.boot</groupId>-->
-<!--			<artifactId>spring-boot-starter-webflux</artifactId>-->
-<!--		</dependency>-->
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.integration</groupId>-->
-<!--			<artifactId>spring-integration-webflux</artifactId>-->
-<!--		</dependency>-->
 		<dependency>
 			<groupId>com.example</groupId>
 			<artifactId>streamworkshop-domain</artifactId>
@@ -99,12 +89,24 @@
 		<sourceDirectory>${project.basedir}/src/main/java</sourceDirectory>
 		<testSourceDirectory>${project.basedir}/src/test/java</testSourceDirectory>
 		<plugins>
+			<!-- PER Actuator docs -->
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<skip>true</skip>
+					<imageName>${appImageName}</imageName>
 				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>build-info</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>pl.project13.maven</groupId>
+				<artifactId>git-commit-id-plugin</artifactId>
 			</plugin>
 		</plugins>
 	</build>

@@ -1,4 +1,4 @@
-export scdf_namespace="default"
+export scdf_namespace="workshop"
 export scdf_release="lab_scdf"
 
 export prometheus_namespace="prometheus"
@@ -18,3 +18,5 @@ if ! helm status "${scdf_release}" >/dev/null; then
     --set rabbitmq.enabled=true
 fi
 
+export SERVICEPORT=$(kubectl get --namespace default -o jsonpath="{.spec.ports[0].port}" services my-release-spring-cloud-dataflow-server)
+kubectl port-forward --namespace default svc/my-release-spring-cloud-dataflow-server ${SERVICEPORT}:${SERVICEPORT} & echo "http://127.0.0.1:${SERVICEPORT}/dashboard" &
