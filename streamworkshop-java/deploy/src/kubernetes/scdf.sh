@@ -1,6 +1,7 @@
 export scdf_namespace="default"
 export scdf_release="labscdf"
 
+eval $(minikube docker-env)
 helm repo add bitnami https://charts.bitnami.com/bitnami
 helm install -n ${scdf_namespace} ${scdf_release} bitnami/spring-cloud-dataflow
 
