@@ -28,8 +28,6 @@
 
     <modules>
         <module>stock-domain</module>
-        <module>stock-trades</module>
-        <module>stock-quotes</module>
         <module>stock-conflate</module>
     </modules>
 

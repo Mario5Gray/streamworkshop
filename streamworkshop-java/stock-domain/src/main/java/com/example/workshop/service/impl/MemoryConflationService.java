@@ -20,7 +20,6 @@ public class MemoryConflationService implements ConflationService {
             if (price < c.getLow()) c.setLow(price);
 
             sink.success(c);
-
         });
     }
 }

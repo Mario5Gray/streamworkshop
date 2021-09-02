@@ -20,7 +20,6 @@ import java.util.HashMap;
                 "--spring.cloud.stream.bindings.conflate-out-0.destination=conflate"
         }
 )
-@Tag("integration")
 public class ConflationFunctionTests {
 
     @Autowired

@@ -2,14 +2,12 @@ package com.example.workshop.domain;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.data.annotation.Id;
 import org.springframework.util.Assert;
 
 
 @Setter
 @Getter
 public class Stock {
-    @Id
     String symbol;
     double price;
     double high;
