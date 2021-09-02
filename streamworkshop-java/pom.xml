@@ -9,13 +9,15 @@
         <relativePath/>
     </parent>
 
-	<groupId>com.example</groupId>
-	<artifactId>streamworkshop-parent</artifactId>
+	<groupId>com.example.streamworkshop</groupId>
+	<artifactId>stock-parent</artifactId>
 	<version>0.0.1</version>
     <packaging>pom</packaging>
     <name>Stream Workshop Parent</name>
 
     <properties>
+        <jupiter.version>1.15.3</jupiter.version>
+        <tc.mongodb.version>1.16.0</tc.mongodb.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>11</java.version>
@@ -25,9 +27,10 @@
     </properties>
 
     <modules>
-        <module>domain</module>
-        <module>function-trade</module>
-        <module>function-snapshot</module>
+        <module>stock-domain</module>
+        <module>stock-trades</module>
+        <module>stock-quotes</module>
+        <module>stock-conflate</module>
     </modules>
 
     <repositories>
