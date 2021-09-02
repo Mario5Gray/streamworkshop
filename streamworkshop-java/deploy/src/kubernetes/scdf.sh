@@ -1,5 +1,5 @@
 export scdf_namespace="workshop"
-export scdf_release="lab_scdf"
+export scdf_release="labscdf"
 
 helm repo add bitnami https://charts.bitnami.com/bitnami
 helm install -n ${scdf_namespace} ${scdf_release} bitnami/spring-cloud-dataflow
@@ -7,7 +7,7 @@ helm install -n ${scdf_namespace} ${scdf_release} bitnami/spring-cloud-dataflow
 if ! helm status "${scdf_release}" >/dev/null; then
   echo "Install bitnami/spring-cloud-dataflow scdf_release_name=${scdf_release} scdf_namespace=${scdf_namespace}"
 
-  helm upgrade --wait -n "${scdf_namespace}" --install "${scdf_release}" bitnami/spring-cloud-dataflow \
+  helm --wait -n "${scdf_namespace}" --install "${scdf_release}" bitnami/spring-cloud-dataflow \
     --set server.configuration.batchEnabled=false \
     --set server.configuration.streamingEnabled=true \
     --set skipper.enabled=true \
